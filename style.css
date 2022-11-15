@@ -1,0 +1,61 @@
+body {
+    background-image: url(bgconsole.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    height: 97vh;
+}
+
+.signin{
+    color: rgba(29, 178, 223, 1);
+    font-weight: 1px;
+    font-size: 35px;
+}
+
+#signIn{
+    border: 1px solid rgba(29, 178, 223, 1);
+    border-radius: 20px;
+    padding: 35px;
+    /* background: rgba( 255, 255, 255, 0.1 ); */
+    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+}
+
+form {
+    color: white;
+    font-weight: lighter;
+}
+.input{
+    background-color: rgba(1, 35, 64, 1);
+    border-color: rgba(29, 178, 223, 1);
+    margin-top: -15px;
+}
+
+p{
+    font-size: 14px;
+}
+.btn{
+    color: rgba(29, 178, 223, 1);
+    border: 1px solid rgba(29, 178, 223, 1);
+    border-radius: 20px;
+    width: 170px;
+    padding: 8px;
+}
+.btn:hover{
+    background-color: rgba(29, 178, 223, 1);
+    color: rgba(1, 35, 64, 1);
+}
+.signup{
+    font-size: 12px;
+}
+
+.privacy{
+    font-size: 10px;
+}
+.link{
+    color: rgba(29, 178, 223, 1);
+    text-decoration: none;
+}
+.link:hover{
+    color: rgba(29, 178, 223, 1);
+    text-decoration: underline;
+}
