@@ -4,58 +4,66 @@ body {
     background-attachment: fixed;
     background-size: cover;
     height: 97vh;
+    width: 98vw;
 }
 
-.signin{
+.signin {
     color: rgba(29, 178, 223, 1);
     font-weight: 1px;
     font-size: 35px;
 }
 
-#signIn{
+#signIn {
     border: 1px solid rgba(29, 178, 223, 1);
     border-radius: 20px;
     padding: 35px;
     /* background: rgba( 255, 255, 255, 0.1 ); */
-    box-shadow: 0 8px 32px 0 rgba( 31, 38, 135, 0.37 );
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 }
 
 form {
     color: white;
     font-weight: lighter;
 }
-.input{
+
+.input {
     background-color: rgba(1, 35, 64, 1);
     border-color: rgba(29, 178, 223, 1);
     margin-top: -15px;
 }
 
-p{
+p {
     font-size: 14px;
 }
-.btn{
+
+.btn {
     color: rgba(29, 178, 223, 1);
     border: 1px solid rgba(29, 178, 223, 1);
     border-radius: 20px;
     width: 170px;
     padding: 8px;
 }
-.btn:hover{
+
+.btn:hover {
     background-color: rgba(29, 178, 223, 1);
     color: rgba(1, 35, 64, 1);
 }
-.signup{
+
+.signup {
     font-size: 12px;
 }
 
-.privacy{
+.privacy {
     font-size: 10px;
 }
-.link{
+
+.link {
     color: rgba(29, 178, 223, 1);
     text-decoration: none;
 }
-.link:hover{
+
+.link:hover {
     color: rgba(29, 178, 223, 1);
     text-decoration: underline;
 }
+

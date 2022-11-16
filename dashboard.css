@@ -1,7 +1,77 @@
-body{
+body {
     background-image: url(bluebg.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     height: 97vh;
+}
+
+.navbar {
+    background-color: rgba(0, 37, 62, 1);
+    width: 100%;
+}
+
+.logo {
+    height: 50px;
+}
+
+.search {
+    width: 200px;
+}
+
+.pp {
+    width: 40px;
+    border-radius: 20px;
+}
+
+.input:focus {
+    box-shadow: none;
+}
+
+.btn {
+    border-radius: 20px;
+    margin-left: -45px;
+}
+
+.input {
+    border-radius: 20px;
+}
+
+/* .sidepp{
+    background-image: url(bgconsole.png);
+    /* width: 250px;
+    height: 100px;
+    background-size: 400px;
+    background-repeat: no-repeat;
+    
+} */
+.sidebar {
+    background-color: rgba(0, 37, 62, 1);
+}
+
+.nav-link {
+    font-weight: lighter;
+}
+
+.blue {
+    border-radius: 20px;
+}
+
+.stats {
+    height: 15%;
+}
+
+.user {
+    background-color: rgba(0, 37, 62, 1);
+    width: 480px;
+    border: 3px solid rgba(29, 178, 223, 1);
+    border-radius: 25px;
+}
+
+dash {
+    height: fit-content;
+}
+
+.table {
+    margin-top: -150px;
 }
