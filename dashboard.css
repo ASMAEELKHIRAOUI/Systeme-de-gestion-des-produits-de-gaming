@@ -54,11 +54,8 @@ body {
 }
 
 .blue {
-    border-radius: 20px;
-}
-
-.stats {
-    height: 15%;
+    border-radius: 35px;
+    margin-left: -25px;
 }
 
 .user {
@@ -67,11 +64,9 @@ body {
     border: 3px solid rgba(29, 178, 223, 1);
     border-radius: 25px;
 }
-
-dash {
-    height: fit-content;
+.table{
+    font-weight: lighter;
 }
-
-.table {
-    margin-top: -150px;
+.line{
+    border-bottom: 1px solid rgba(29, 178, 223, 1);
 }
