@@ -1,5 +1,5 @@
 body {
-    background-image: url(/assets/img/bluebg.png);
+    background-image: url("img/bluebg.png");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
@@ -31,6 +31,17 @@ body {
 .btn {
     border-radius: 20px;
     margin-left: -45px;
+}
+.add-btn {
+    color: rgba(29, 178, 223, 1);
+    border: 1px solid rgba(29, 178, 223, 1);
+    border-radius: 20px;
+    width: 170px;
+    padding: 8px;
+}
+.add-btn:hover {
+    background-color: rgba(29, 178, 223, 1);
+    color: rgba(1, 35, 64, 1);
 }
 
 .input {
