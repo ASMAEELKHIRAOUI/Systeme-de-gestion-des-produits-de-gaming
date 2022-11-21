@@ -36,7 +36,7 @@ body {
     color: rgba(29, 178, 223, 1);
     border: 1px solid rgba(29, 178, 223, 1);
     border-radius: 20px;
-    width: 170px;
+    width: 150px;
     padding: 8px;
 }
 .add-btn:hover {
@@ -65,7 +65,7 @@ body {
 }
 
 .blue {
-    border-radius: 35px;
+    border-radius: 50px;
     margin-left: -25px;
 }
 
@@ -73,7 +73,7 @@ body {
     background-color: rgba(0, 37, 62, 1);
     width: 480px;
     border: 3px solid rgba(29, 178, 223, 1);
-    border-radius: 25px;
+    border-radius: 50px;
 }
 .table{
     font-weight: lighter;

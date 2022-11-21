@@ -1,6 +1,8 @@
+<?php 
+	include 'scripts.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -65,13 +67,13 @@
                         <img class="blue col-3" src="./assets/img/blueconsole.jpg" alt="" style="width:100px;height:100px">
                         <div class="stats col-3 text-light ms-2">
                             <h4 class="mt-2">PRODUCTS</h4>
-                            <h4 class="mt-3">70</h4>
+                            <h4 class="mt-3"><?php counterProduct() ?></h4>
                         </div>
                     </product>
                 </stats>
             </dash>
             <div class="d-flex justify-content-end mt-4">
-				<a href="#modal-task" data-bs-toggle="modal" class="add-btn btn btn-rounded px-4 rounded-pill"><i class="bi bi-plus me-2 ms-n2 text-success-900"></i> Add Product</a>
+				<a href="#modal-task" data-bs-toggle="modal" class="add-btn btn btn-rounded rounded-pill"><i class="bi bi-plus me-2 ms-n2 text-success-900"></i> Add Product</a>
 			</div>
             <table class="table ms-3 mt-4 text-light">
                 <thead>
@@ -86,52 +88,69 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="line">
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>3bidat rma</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>
-                            <div class="d-flex col-2">
-                                <a href=""><i class="bi bi-pencil-square text-primary mt-2 fs-4"></i></a>
-                                <a href=""><i class="bi bi-trash3 text-info ms-2 mt-2 fs-4"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="line">
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>
-                            <div class="d-flex col-2">
-                                <a href=""><i class="bi bi-pencil-square text-primary mt-2 fs-4"></i></a>
-                                <a href=""><i class="bi bi-trash3 text-info ms-2 mt-2 fs-4"></i></a>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr class="line">
-                        <th scope="row">3</th>
-                        <td>larry</td>
-                        <td>The bird</td>
-                        <td>@fat</td>
-                        <td>@mdo</td>
-                        <td>@mdo</td>
-                        <td>
-                            <div class="d-flex col-2">
-                                <a href=""><i class="bi bi-pencil-square text-primary mt-2 fs-4"></i></a>
-                                <a href=""><i class="bi bi-trash3 text-info ms-2 mt-2 fs-4"></i></a>
-                            </div>
-                        </td>
-                    </tr>
+                    <!-- PHP CODE HERE -->
+                    <?php
+                        getProducts()
+                    ?>
                 </tbody>
             </table>
         </div>
     </container>
+    <div class="modal fade" id="modal-task">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<form action="scripts.php" method="POST" id="form-product" enctype="multipart/form-data">
+					<div class="modal-header">
+						<h5 class="modal-title">Add Product</h5>
+						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
+					</div>
+					<div class="modal-body">
+                        <!-- This Input Allows Storing Task Index  -->
+                        <input type="hidden" id="task-id" name = 'id'>
+                        <div class="mb-3">
+                            <label class="form-label">Product Name</label>
+                            <input type="text" class="form-control" id="task-title" name ='productName' required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Brand</label>
+                            <input type="text" class="form-control" id="task-title" name ='brand' required/>
+                        </div>
+                        <div class="mb-3">
+								<label class="form-label">Category</label name priority>
+								<select class="form-select" id="task-priority" name="category" required>
+									<option value="">Please select</option>
+									<option value="1">Sandbox</option>
+									<option value="2">RTS</option>
+									<option value="3">FPS/TPS</option>
+									<option value="4">MOBA</option>
+                                    <option value="5">RPG/ARPG</option>
+                                    <option value="6">Simulation/Sports</option>
+                                    <option value="7">Puzzlers/Party games</option>
+                                    <option value="8">Action/Adventure</option>
+                                    <option value="9">Survival/Horror</option>
+								</select>
+							</div>
+                        <div class="mb-3">
+                            <label class="form-label">Image</label>
+                            <input type="file" class="form-control" id="image" name ='image'/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Quantity</label>
+                            <input type="number" class="form-control" id="stock" name ='stock' required/>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Price</label>
+                            <input type="number" class="form-control" id="price" name ='price' required/>
+                        </div>
+                    </div>
+					<div class="modal-footer">
+						<a href="#" class="btn btn-white" data-bs-dismiss="modal">Cancel</a>
+						<button type="submit" name="save" class="btn btn-primary task-action-btn ms-1" id="task-save-btn">Save</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
