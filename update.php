@@ -57,11 +57,11 @@ if($result)
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-light">Stock</label>
-                                <input type="text" class="form-control" id="stock" name ="stock" value="<?php echo $row['Stock']; ?>" required/>
+                                <input type="number" class="form-control" id="stock" name ="stock" value="<?php echo $row['Stock']; ?>" required/>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-light">Price</label>
-                                <input type="text" class="form-control" id="price" name ="price" value="<?php echo $row['Price']; ?>" required/>
+                                <input type="number" class="form-control" id="price" name ="price" value="<?php echo $row['Price']; ?>" required/>
                             </div>
                         </div>
                         <div class="modal-footer">

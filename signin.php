@@ -1,3 +1,7 @@
+<?php 
+	include 'database.php';
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,17 +20,18 @@
         <div class="col-4"></div>
 
         <div id="signIn" class="col-3">
-            <form>
+            <!-- self php action from -->
+            <form action="signin.php" method="POST">
                 <p class="signin text-center"> SIGN IN </p>
                 <div class="email pt-3">
                     <p>Email Address</p>
-                    <input class="input form form-control" type="email">
+                    <input name="email" class="input form form-control" type="email" data-parsley-type="email">
                 </div>
                 <div class="password pt-3">
                     <p>Password</p>
-                    <input class="input form form-control" type="password">
+                    <input class="input form form-control" type="password" name="password" data-parsley-minlength="8">
                 </div>
-                <div class="row justify-content-center mt-3"><button class="btn">SIGN IN NOW</button></div>
+                <div class="row justify-content-center mt-3"><button class="btn" name="signIN">SIGN IN NOW</button></div>
                 <div class="signup text-center mt-4">
                     Don't have an account? <a class="link" href="signup.php">Create an account</a>
                 </div>
@@ -36,6 +41,20 @@
             </form>
         </div>
     </div>
+    <script src="main.js"></script>
 </body>
-
 </html>
+<?php 
+	if(isset($_POST['signIN'])){
+        $connect=connection();
+        $email=$_POST['email'];
+        $pwd=$_POST['password'];
+        $sql="SELECT * FROM users WHERE Email='$email' AND Password='$pwd'";
+        $result=mysqli_query($connect,$sql);
+        if(mysqli_num_rows($result)>0){
+            $row = mysqli_fetch_assoc($result);
+            $_SESSION["username"]= $row["UserName"];
+            header('location: dashboard.php');
+        }
+    }
+?>

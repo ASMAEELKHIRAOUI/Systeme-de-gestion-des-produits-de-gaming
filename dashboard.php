@@ -29,11 +29,19 @@
                     </form>
                     <div class="btn-group">
                         <img src="./assets/img/pp.png" class="pp">
-                        <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown"
-                            aria-expanded="false">User Name</button>
+                        <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">
+                        <?php
+                            if(isset($_SESSION["username"]))
+                            echo $_SESSION["username"];
+                        ?>
+                        </button>
                         <ul class="dropdown-menu">
                             <li><button class="dropdown-item" type="button">Settings</button></li>
-                            <li><button class="dropdown-item" type="button">Log out</button></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><form action="scripts.php" method="POST">
+                                <button class="dropdown-item" type="submit" name="logout">Logout</button>
+                                </form>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -41,10 +49,15 @@
         </nav>
     </header>
     <container class="d-flex h-100 text-secondary">
-        <side class="sidebar app app-header-fixed app-sidebar-fixed d-flex flex-column flex-shrink-0 p-3 text-white h-100" style="width: 200px;">
+        <side class="sidebar app app-header-fixed app-sidebar-fixed d-flex flex-column flex-shrink-0 p-3 text-white h-100 " style="width: 200px;">
             <a href="/" class="sidepp d-grid align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none w-2">
                 <img src="./assets/img/pp.png" class="pp" alt="">
-                <span class="fs-4">User Name</span>
+                <span class="fs-4">
+                    <?php
+                        if(isset($_SESSION["username"]))
+                        echo $_SESSION["username"];
+                    ?>
+                </span>
             </a>
             <ul class="nav nav-pills flex-column mb-auto mt-4">
                 <li><a href="#" class="nav-link text-white"><i class="bi bi-house me-3"></i>Home</a></li>
@@ -54,13 +67,13 @@
         </side>
         <div class="">
             <dash class="dash ms-2 bg-success">
-                <h1 class="">Dashboard</h1>
+                <h1 class="ms-4">Dashboard</h1>
                 <stats class="row ms-3">
                     <user class="user ms-2 col_6 row h-50">
                         <img class="blue col-3" src="./assets/img/bluepp.png" alt="" style="width:100px;height:100px">
                         <div class="stats col-3 text-light ms-2">
                             <h4 class="mt-2">USERS</h4>
-                            <h4 class="mt-3">30</h4>
+                            <h4 class="mt-3"><?php counterUser() ?></h4>
                         </div>
                     </user>
                     <product class="user ms-4 col-6 row h-50">
@@ -78,9 +91,9 @@
             <table class="table ms-3 mt-4 text-light">
                 <thead>
                     <tr class="line">
-                        <th class="col-2">Product ID</th>
+                        <th class="col-1"></th>
                         <th class="col-3">Product Name</th>
-                        <th class="col-2">Brand</th>
+                        <th class="col-3">Brand</th>
                         <th class="col-2">Category</th>
                         <th class="col-1">Stock</th>
                         <th class="col-1">Price</th>
@@ -88,7 +101,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- PHP CODE HERE -->
                     <?php
                         getProducts()
                     ?>
@@ -105,7 +117,6 @@
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
 					</div>
 					<div class="modal-body">
-                        <!-- This Input Allows Storing Task Index  -->
                         <input type="hidden" id="task-id" name = 'id'>
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>

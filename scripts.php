@@ -8,11 +8,12 @@
     if(isset($_POST['save']))        saveProduct();
     if(isset($_POST['update']))      updateProduct();
     if(isset($_GET['delete']))       deleteProduct();
+    if(isset($_POST['logout']))      logout();
     
     function getProducts(){
         //CODE HERE
         $connect = connection();
-        $sql= "SELECT products.ProductID, products.ProductName , products.Brand, category.CatName category, products.Stock, products.Price FROM products INNER JOIN category ON category.CatID = products.CategoryID;";
+        $sql= "SELECT products.ProductID, products.ProductName , products.Brand, category.CatName category, products.Stock, products.Price,image FROM products INNER JOIN category ON category.CatID = products.CategoryID;";
         $result=mysqli_query($connect,$sql);
         if($result){
             while($row=mysqli_fetch_assoc($result)){
@@ -22,8 +23,10 @@
                 $category = $row['category'];
                 $stock = $row['Stock'];
                 $price = $row['Price'];
+                $img= $row['image'];
+
                 echo '<tr class="line">
-                    <th scope="row">'.$id.'</th>
+                    <th scope="row"><img src="./assets/img/'.$img.'" alt="" style="width:50px;height:50px"></th>
                     <td>'.$name.'</td>
                     <td>'.$brand.'</td>
                     <td>'.$category.'</td>
@@ -49,6 +52,13 @@
         echo mysqli_num_rows($result);
     }
 
+    function counterUser(){
+        $connect = connection();
+        $sql="SELECT * FROM users";
+        $result=mysqli_query($connect,$sql);
+        echo mysqli_num_rows($result);
+    }
+
     function saveProduct()
     {
         //CODE HERE
@@ -59,8 +69,18 @@
         $category = $_POST['category'];
         $stock = $_POST['stock'];
         $price = $_POST['price'];
+        $imgname = $_FILES['image']['name'];
+
+        if(!empty($imgname)){
+            $ext = pathinfo($imgname, PATHINFO_EXTENSION);
+            $new_imgname = time().'.'.$ext;
+            move_uploaded_file($_FILES['image']['tmp_name'], './assets/img/'.$new_imgname);
+        }
+        else{
+            $new_imgname = '';
+        }
         //SQL SELECT
-        $sql = "INSERT INTO products VALUES (null, '$name','$brand','$category','$stock','$price')";
+        $sql = "INSERT INTO products VALUES (null, '$name','$brand','$category','$stock','$price','$new_imgname')";
         $result=mysqli_query($connect,$sql);
         //SQL INSERT
         if($result){
@@ -101,4 +121,10 @@
 		    header('location: dashboard.php');
         }
     }
+    function logout(){
+        $connect=connection();
+        session_destroy();
+        header("Location: signin.php");
+    }
+    
 ?>
