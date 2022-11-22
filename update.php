@@ -32,36 +32,37 @@ if($result)
                             <input type="hidden" id="task-id" name = "id"  value="<?php echo $row['ProductID']; ?>">
                             <div class="mb-3">
                                 <label class="form-label text-light">Product Name</label>
-                                <input type="text" class="form-control" id="product-name" name ="name" value="<?php echo $row['ProductName']; ?>" required/>
+                                <input type="text" class="form-control" id="product-name" name ="name" value="<?php echo $row['ProductName']; ?>" data-parsley-trigger="keyup" required/>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-light">Brand</label>
-                                <input type="text" class="form-control" id="brand" name ="brand" value="<?php echo $row['Brand']; ?>" required/>
+                                <input type="text" class="form-control" id="brand" name ="brand" value="<?php echo $row['Brand']; ?>" data-parsley-trigger="keyup" required/>
                             </div>
                             <div class="mb-3">
                                 <div><label class="form-label text-light">Category</label name priority></div>
                                 <div>
                                     <select class="form-select w-100 p-1 rounded" id="category" name="category" required>
                                         <option value="">Please select</option>
-                                        <option value="1" <?php if($row['CategoryID']=='1'){ echo ' selected'; }?>>Sandbox</option>
-                                        <option value="2" <?php if($row['CategoryID']=='2'){ echo ' selected'; }?>>RTS</option>
-                                        <option value="3" <?php if($row['CategoryID']=='3'){ echo ' selected'; }?>>FPS/TPS</option>
-                                        <option value="4" <?php if($row['CategoryID']=='4'){ echo ' selected'; }?>>MOBA</option>
-                                        <option value="5" <?php if($row['CategoryID']=='5'){ echo ' selected'; }?>>RPG/ARPG</option>
-                                        <option value="6" <?php if($row['CategoryID']=='6'){ echo ' selected'; }?>>Simulation/Sports</option>
-                                        <option value="7" <?php if($row['CategoryID']=='7'){ echo ' selected'; }?>>Puzzlers/Party games</option>
-                                        <option value="8" <?php if($row['CategoryID']=='8'){ echo ' selected'; }?>>Action/Adventure</option>
-                                        <option value="9" <?php if($row['CategoryID']=='9'){ echo ' selected'; }?>>Survival/Horror</option>
+                                        <option value="1" <?php if($row['CategoryID']=='1'){ echo 'selected'; }?>>Game controller</option>
+                                        <option value="2" <?php if($row['CategoryID']=='2'){ echo 'selected'; }?>>Memory unit</option>
+                                        <option value="3" <?php if($row['CategoryID']=='3'){ echo 'selected'; }?>>Audio/Video cable</option>
+                                        <option value="4" <?php if($row['CategoryID']=='4'){ echo 'selected'; }?>>Case</option>
+                                        <option value="5" <?php if($row['CategoryID']=='5'){ echo 'selected'; }?>>PC</option>
+                                        <option value="6" <?php if($row['CategoryID']=='6'){ echo 'selected'; }?>>Software accessorie</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="mb-3">
+                                <label class="form-label text-light">Image</label>
+                                <input type="file" class="form-control" id="image" name ='image' required/>
+                            </div>
+                            <div class="mb-3">
                                 <label class="form-label text-light">Stock</label>
-                                <input type="number" class="form-control" id="stock" name ="stock" value="<?php echo $row['Stock']; ?>" required/>
+                                <input type="number" class="form-control" id="stock" name ="stock" value="<?php echo $row['Stock']; ?>" data-parsley-type="integer" data-parsley-trigger="keyup" required/>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-light">Price</label>
-                                <input type="number" class="form-control" id="price" name ="price" value="<?php echo $row['Price']; ?>" required/>
+                                <input type="number" class="form-control" id="price" name ="price" value="<?php echo $row['Price']; ?>" data-parsley-type="integer" data-parsley-trigger="keyup" required/>
                             </div>
                         </div>
                         <div class="modal-footer">

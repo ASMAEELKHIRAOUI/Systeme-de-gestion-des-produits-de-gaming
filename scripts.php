@@ -100,7 +100,19 @@
         $category = $_POST['category'];
         $stock = $_POST['stock'];
         $price = $_POST['price'];
-        $sql = "UPDATE products SET ProductName = '$name', Brand = '$brand', CategoryID = '$category', Stock = '$stock', Price = '$price' WHERE ProductID = '$id'";
+
+        $imgname = $_FILES['image']['name'];
+        if(!empty($imgname)){
+            $ext = pathinfo($imgname, PATHINFO_EXTENSION);
+            $new_imgname = time().'.'.$ext;
+            move_uploaded_file($_FILES['image']['tmp_name'], './assets/img/'.$new_imgname);
+        }
+        else{
+            $new_imgname = '';
+        }
+
+        // $img = $_POST['image'];
+        $sql = "UPDATE products SET ProductName = '$name', Brand = '$brand', CategoryID = '$category', Stock = '$stock', Price = '$price', image= ' $new_imgname' WHERE ProductID = '$id'";
         $result=mysqli_query($connect,$sql);
         if($result){
             $_SESSION['message'] = "Product has been updated successfully !";

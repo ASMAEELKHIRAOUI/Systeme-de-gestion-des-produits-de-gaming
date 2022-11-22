@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.2/font/bootstrap-icons.css">
     <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="./assets/dashboard.css"/>
+    <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css"/>
+    <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script defer src="https://parsleyjs.org/dist/parsley.min.js"></script>
     <title>Origin Game - Dashboard</title>
 </head>
 
@@ -86,8 +89,29 @@
                 </stats>
             </dash>
             <div class="d-flex justify-content-end mt-4">
-				<a href="#modal-task" data-bs-toggle="modal" class="add-btn btn btn-rounded rounded-pill"><i class="bi bi-plus me-2 ms-n2 text-success-900"></i> Add Product</a>
+				<a href="#modal-task" data-bs-toggle="modal" class="add-btn btn btn-rounded rounded-pill" onclick="document.getElementById('form').reset()"><i class="bi bi-plus me-2 ms-n2 text-success-900"></i> Add Product</a>
 			</div>
+            <?php if(isset($_SESSION['message'])){
+					if ($_SESSION['message'] == 'Product has been deleted successfully !'){
+			?>
+				<div class="alert alert-danger alert-dismissible fade show mt-2 ms-3">
+				<strong>Success!</strong>
+					<?php 
+						echo $_SESSION['message']; 
+						unset($_SESSION['message']);
+					?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+				</div>
+			<?php } else{?>
+				<div class="alert alert-success alert-dismissible fade show mt-2 ms-3">
+				<strong>Success!</strong>
+					<?php 
+						echo $_SESSION['message']; 
+						unset($_SESSION['message']);
+					?>
+					<button type="button" class="btn-close" data-bs-dismiss="alert"></span>
+				</div> 
+				<?php }} ?>
             <table class="table ms-3 mt-4 text-light">
                 <thead>
                     <tr class="line">
@@ -111,7 +135,7 @@
     <div class="modal fade" id="modal-task">
 		<div class="modal-dialog">
 			<div class="modal-content">
-				<form action="scripts.php" method="POST" id="form-product" enctype="multipart/form-data">
+				<form action="scripts.php" method="POST" id="form" enctype="multipart/form-data" data-parsley-validate>
 					<div class="modal-header">
 						<h5 class="modal-title">Add Product</h5>
 						<a href="#" class="btn-close" data-bs-dismiss="modal"></a>
@@ -120,38 +144,35 @@
                         <input type="hidden" id="task-id" name = 'id'>
                         <div class="mb-3">
                             <label class="form-label">Product Name</label>
-                            <input type="text" class="form-control" id="task-title" name ='productName' required/>
+                            <input type="text" class="form-control" id="task-title" name ='productName' data-parsley-trigger="keyup" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Brand</label>
-                            <input type="text" class="form-control" id="task-title" name ='brand' required/>
+                            <input type="text" class="form-control" id="task-title" name ='brand' data-parsley-trigger="keyup" required/>
                         </div>
                         <div class="mb-3">
 								<label class="form-label">Category</label name priority>
 								<select class="form-select" id="task-priority" name="category" required>
 									<option value="">Please select</option>
-									<option value="1">Sandbox</option>
-									<option value="2">RTS</option>
-									<option value="3">FPS/TPS</option>
-									<option value="4">MOBA</option>
-                                    <option value="5">RPG/ARPG</option>
-                                    <option value="6">Simulation/Sports</option>
-                                    <option value="7">Puzzlers/Party games</option>
-                                    <option value="8">Action/Adventure</option>
-                                    <option value="9">Survival/Horror</option>
+									<option value="1">Game controller</option>
+									<option value="2">Memory unit</option>
+									<option value="3">Audio/Video cable</option>
+									<option value="4">Case</option>
+                                    <option value="5">PC</option>
+                                    <option value="6">Software accessorie</option>
 								</select>
 							</div>
                         <div class="mb-3">
                             <label class="form-label">Image</label>
-                            <input type="file" class="form-control" id="image" name ='image'/>
+                            <input type="file" class="form-control" id="image" name ='image' required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Quantity</label>
-                            <input type="number" class="form-control" id="stock" name ='stock' required/>
+                            <input type="number" class="form-control" id="stock" name ='stock' data-parsley-type="integer" data-parsley-trigger="keyup" required/>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Price</label>
-                            <input type="number" class="form-control" id="price" name ='price' required/>
+                            <input type="number" class="form-control" id="price" name ='price' data-parsley-type="integer" data-parsley-trigger="keyup" required/>
                         </div>
                     </div>
 					<div class="modal-footer">
@@ -165,6 +186,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3"
         crossorigin="anonymous"></script>
+    <script src="main.js"></script>
 </body>
 
 </html>
