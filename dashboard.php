@@ -1,5 +1,10 @@
 <?php 
+    include 'init.php';
 	include 'scripts.php';
+    if(!isset($_SESSION['UserName']))
+    {
+        header("Location: signin.php");
+    }  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,8 +39,8 @@
                         <img src="./assets/img/pp.png" class="pp">
                         <button type="button" class="btn dropdown-toggle text-light" data-bs-toggle="dropdown" aria-expanded="false">
                         <?php
-                            if(isset($_SESSION["username"]))
-                            echo $_SESSION["username"];
+                            if(isset($_SESSION["UserName"]))
+                            echo $_SESSION["UserName"];
                         ?>
                         </button>
                         <ul class="dropdown-menu">
@@ -57,8 +62,8 @@
                 <img src="./assets/img/pp.png" class="pp" alt="">
                 <span class="fs-4">
                     <?php
-                        if(isset($_SESSION["username"]))
-                        echo $_SESSION["username"];
+                        if(isset($_SESSION["UserName"]))
+                        echo $_SESSION["UserName"];
                     ?>
                 </span>
             </a>

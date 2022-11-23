@@ -1,6 +1,6 @@
-<?php 
+<?php
+    include 'init.php';
 	include 'database.php';
-    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,13 +51,20 @@
 	if(isset($_POST['signIN'])){
         $connect=connection();
         $email=$_POST['email'];
-        $pwd=$_POST['password'];
-        $sql="SELECT * FROM users WHERE Email='$email' AND Password='$pwd'";
-        $result=mysqli_query($connect,$sql);
-        if(mysqli_num_rows($result)>0){
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION["username"]= $row["UserName"];
-            header('location: dashboard.php');
+        $pass=$_POST['password'];
+        $sql="SELECT * FROM users WHERE Email='$email' AND Password = '$pass'";
+        $result = mysqli_query($connect,$sql);
+        $rowCount = mysqli_num_rows($result);
+        if($rowCount <= 0) {
+            header("Location: signin.php");
+        } else {
+            // Fetch user data and store in php session
+            while($row = mysqli_fetch_array($result)) {
+                $_SESSION['UserName'] = $row['UserName'];
+                $_SESSION['email'] = $row['Email'];
+                var_dump($_SESSION);
+                header("Location: dashboard.php");
+            }
         }
     }
 ?>

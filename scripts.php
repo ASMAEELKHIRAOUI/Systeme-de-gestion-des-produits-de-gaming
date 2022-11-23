@@ -2,8 +2,6 @@
     //INCLUDE DATABASE FILE
     include('database.php');
     //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
-    session_start();
-
     //ROUTING
     if(isset($_POST['save']))        saveProduct();
     if(isset($_POST['update']))      updateProduct();
@@ -110,8 +108,6 @@
         else{
             $new_imgname = '';
         }
-
-        // $img = $_POST['image'];
         $sql = "UPDATE products SET ProductName = '$name', Brand = '$brand', CategoryID = '$category', Stock = '$stock', Price = '$price', image= ' $new_imgname' WHERE ProductID = '$id'";
         $result=mysqli_query($connect,$sql);
         if($result){
@@ -138,5 +134,4 @@
         session_destroy();
         header("Location: signin.php");
     }
-    
 ?>
