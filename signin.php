@@ -48,22 +48,24 @@
 </body>
 </html>
 <?php 
-	if(isset($_POST['signIN'])){
+    if($_SERVER['REQUEST_METHOD'] == "POST"){
         $connect=connection();
-        $email=$_POST['email'];
-        $pass=$_POST['password'];
-        $sql="SELECT * FROM users WHERE Email='$email' AND Password = '$pass'";
-        $result = mysqli_query($connect,$sql);
-        $rowCount = mysqli_num_rows($result);
-        if($rowCount <= 0) {
-            header("Location: signin.php");
-        } else {
-            // Fetch user data and store in php session
-            while($row = mysqli_fetch_array($result)) {
-                $_SESSION['UserName'] = $row['UserName'];
-                $_SESSION['email'] = $row['Email'];
-                var_dump($_SESSION);
-                header("Location: dashboard.php");
+        $email = $_POST['email'];
+        $pass = $_POST['password'];
+        if(!empty($email) || !empty($password) || !is_numeric($email)){
+            $sql = "SELECT * FROM users WHERE Email = '$email'";
+            $result = mysqli_query($connect, $sql);
+            if($result){
+                if($result && mysqli_num_rows($result) > 0){
+                    $user_data = mysqli_fetch_assoc($result);
+                    $pass_verify = password_verify($password, $user_data['Password']);//
+                    if($pass_verify == $pass){                                                                                                              
+                        $_SESSION['id'] = $user_data['UserID'];
+                        $_SESSION['email'] = $user_data['Email'];
+                        $_SESSION['UserName'] =$user_data['UserName'];
+                        header("Location: dashboard.php");
+                    }
+                }
             }
         }
     }
