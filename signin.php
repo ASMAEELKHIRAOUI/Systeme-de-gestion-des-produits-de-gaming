@@ -52,13 +52,13 @@
         $connect=connection();
         $email = $_POST['email'];
         $pass = $_POST['password'];
-        if(!empty($email) || !empty($password) || !is_numeric($email)){
-            $sql = "SELECT * FROM users WHERE Email = '$email'";
+        if(!empty($email) || !empty($password)){
+            $sql = "SELECT * FROM users WHERE Email = '$email' AND Password = '$pass'";
             $result = mysqli_query($connect, $sql);
             if($result){
                 if($result && mysqli_num_rows($result) > 0){
                     $user_data = mysqli_fetch_assoc($result);
-                    $pass_verify = password_verify($password, $user_data['Password']);//
+                    $pass_verify = password_verify($password, $user_data['Password']);
                     if($pass_verify == $pass){                                                                                                              
                         $_SESSION['id'] = $user_data['UserID'];
                         $_SESSION['email'] = $user_data['Email'];
