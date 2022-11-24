@@ -12,10 +12,10 @@
     <title>Origin Game - SignUp</title>
 </head>
 <body>
-    <div  class="row h-100 d-flex align-items-center">
-        <div class="col-4"></div>
-        <div class="col-4"></div>
-        <div id="signIn" class="col-3">
+    <div  class="row-lg h-100 d-flex align-items-center p-5 flex-wrap">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
+        <div id="signIn" class="col-lg-3">
             <form action="signup.php" method="POST" id="form" data-parsley-validate>
                 <p class="signin text-center"> SIGN UP </p>
                 <div class="email pt-3">

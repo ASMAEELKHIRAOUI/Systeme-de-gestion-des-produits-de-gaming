@@ -1,6 +1,10 @@
 <?php
     //INCLUDE DATABASE FILE
     include('database.php');
+    // if(!isset($_SESSION['UserName']))
+    // {
+    //     // header("Location: signin.php");
+    // }else echo "nod awa nod";
     //SESSSION IS A WAY TO STORE DATA TO BE USED ACROSS MULTIPLE PAGES
     //ROUTING
     if(isset($_POST['save']))        saveProduct();
@@ -30,12 +34,10 @@
                     <td>'.$category.'</td>
                     <td>'.$stock.'</td>
                     <td>'.$price.' DH</td>
-                    <td>
-                        <div class="d-flex col-2">
+                    <td><div class="d-flex col-2">
                             <a href="update.php?id='.$id.'"><i class="bi bi-pencil-square text-primary mt-2 fs-4"></i></a>
                             <a href="scripts.php?delete='.$id.'"><i class="bi bi-trash3 text-info ms-2 mt-2 fs-4"></i></a>
-                        </div>
-                    </td>
+                        </div></td>
                 </tr>';
             }
         }
@@ -130,8 +132,11 @@
         }
     }
     function logout(){
-        $connect=connection();
-        session_destroy();
+        if(isset($_SESSION['UserName'])){
+            unset($_SESSION['UserName']);
+            session_destroy();
         header("Location: signin.php");
+    }
+        
     }
 ?>

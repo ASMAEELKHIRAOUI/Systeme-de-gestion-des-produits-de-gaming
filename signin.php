@@ -18,11 +18,11 @@
 </head>
 
 <body>
-    <div class="row h-100 d-flex align-items-center">
-        <div class="col-4"></div>
-        <div class="col-4"></div>
+    <div class="row-lg h-100 d-flex align-items-center p-5 flex-wrap">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4"></div>
 
-        <div id="signIn" class="col-3">
+        <div id="signIn" class="col-lg-3">
             <!-- self php action from -->
             <form action="signin.php" method="POST" id="form" data-parsley-validate>
                 <p class="signin text-center"> SIGN IN </p>
@@ -52,19 +52,15 @@
         $connect=connection();
         $email = $_POST['email'];
         $pass = $_POST['password'];
-        if(!empty($email) || !empty($password)){
-            $sql = "SELECT * FROM users WHERE Email = '$email' AND Password = '$pass'";
+        if(!empty($email) && !empty($pass)){
+            $sql = "SELECT * FROM users WHERE Email = '$email'";
             $result = mysqli_query($connect, $sql);
-            if($result){
-                if($result && mysqli_num_rows($result) > 0){
-                    $user_data = mysqli_fetch_assoc($result);
-                    $pass_verify = password_verify($password, $user_data['Password']);
-                    if($pass_verify == $pass){                                                                                                              
-                        $_SESSION['id'] = $user_data['UserID'];
-                        $_SESSION['email'] = $user_data['Email'];
-                        $_SESSION['UserName'] =$user_data['UserName'];
-                        header("Location: dashboard.php");
-                    }
+            $user_data = mysqli_fetch_assoc($result);
+            if($result && mysqli_num_rows($result) > 0){
+                $_SESSION['UserName']=$user_data['UserName'];
+                $pass_verify = password_verify($pass, $user_data['Password']);
+                if($pass_verify == $pass){  
+                    header("Location: dashboard.php");
                 }
             }
         }

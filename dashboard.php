@@ -46,7 +46,7 @@
                         <ul class="dropdown-menu">
                             <li><button class="dropdown-item" type="button">Settings</button></li>
                             <li><hr class="dropdown-divider"></li>
-                            <li><form action="scripts.php" method="POST">
+                            <li><form method="POST">
                                 <button class="dropdown-item" type="submit" name="logout">Logout</button>
                                 </form>
                             </li>
@@ -64,6 +64,7 @@
                     <?php
                         if(isset($_SESSION["UserName"]))
                         echo $_SESSION["UserName"];
+                        else echo "fxd";
                     ?>
                 </span>
             </a>
