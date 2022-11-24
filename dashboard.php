@@ -24,7 +24,7 @@
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand navbar-light">
             <div class="container-fluid">
                 <div><img class="logo" src="./assets/img/logoog.png"></div>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,14 +57,13 @@
         </nav>
     </header>
     <container class="d-flex h-100 text-secondary">
-        <side class="sidebar app app-header-fixed app-sidebar-fixed d-flex flex-column flex-shrink-0 p-3 text-white h-100 " style="width: 200px;">
+        <div class="sidebar app app-header-fixed app-sidebar-fixed d-flex flex-column flex-shrink-0 p-3 text-white h-100" style="width: 200px;">
             <a href="/" class="sidepp d-grid align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none w-2">
                 <img src="./assets/img/pp.png" class="pp" alt="">
                 <span class="fs-4">
                     <?php
                         if(isset($_SESSION["UserName"]))
                         echo $_SESSION["UserName"];
-                        else echo "fxd";
                     ?>
                 </span>
             </a>
@@ -73,19 +72,19 @@
                 <li><a href="#" class="nav-link text-white" aria-current="page"><i class="bi bi-speedometer2 me-3"></i>Dashboard</a></li>
                 <li><a href="#" class="nav-link text-white"><i class="bi bi-person me-3"></i>Profile</a></li>
             </ul>
-        </side>
+        </div>
         <div class="">
-            <dash class="dash ms-2 bg-success">
+            <dash class="dash ms-2">
                 <h1 class="ms-4">Dashboard</h1>
                 <stats class="row ms-3">
-                    <user class="user ms-2 col_6 row h-50">
+                    <user class="user ms-4 col_6 row h-50 mt-2">
                         <img class="blue col-3" src="./assets/img/bluepp.png" alt="" style="width:100px;height:100px">
                         <div class="stats col-3 text-light ms-2">
                             <h4 class="mt-2">USERS</h4>
                             <h4 class="mt-3"><?php counterUser() ?></h4>
                         </div>
                     </user>
-                    <product class="user ms-4 col-6 row h-50">
+                    <product class="user ms-4 col-6 row h-50 mt-2">
                         <img class="blue col-3" src="./assets/img/blueconsole.jpg" alt="" style="width:100px;height:100px">
                         <div class="stats col-3 text-light ms-2">
                             <h4 class="mt-2">PRODUCTS</h4>
