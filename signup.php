@@ -9,6 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/style.css">
+    <link rel="stylesheet" href="https://parsleyjs.org/src/parsley.css"/>
+    <script defer  src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+    <script defer src="https://parsleyjs.org/dist/parsley.min.js"></script>
     <title>Origin Game - SignUp</title>
 </head>
 <body>
@@ -20,7 +23,7 @@
                 <p class="signin text-center"> SIGN UP </p>
                 <div class="email pt-3">
                     <p>User Name</p>
-                    <input class="input form form-control" type="text" name="user" data-parsley-trigger="keyup" required>
+                    <input class="input form form-control" type="text" name="user" data-parsley-trigger="keyup" data-parsley-minlength="3" required>
                 </div>
                 <div class="email pt-3">
                     <p>Email Address</p>
