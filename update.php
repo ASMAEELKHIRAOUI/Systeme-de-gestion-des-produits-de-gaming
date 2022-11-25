@@ -54,7 +54,7 @@ if($result)
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-light">Image</label>
-                                <input type="file" class="form-control" id="image" name ='image' required/>
+                                <input type="file" class="form-control" id="image" name ='image'/>
                             </div>
                             <div class="mb-3">
                                 <label class="form-label text-light">Stock</label>

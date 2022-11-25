@@ -106,11 +106,13 @@
             $ext = pathinfo($imgname, PATHINFO_EXTENSION);
             $new_imgname = time().'.'.$ext;
             move_uploaded_file($_FILES['image']['tmp_name'], './assets/img/'.$new_imgname);
+            $sql = "UPDATE products SET ProductName = '$name', Brand = '$brand', CategoryID = '$category', Stock = '$stock', Price = '$price', image= ' $new_imgname' WHERE ProductID = '$id'";
         }
         else{
             $new_imgname = '';
+            $sql = "UPDATE products SET ProductName = '$name', Brand = '$brand', CategoryID = '$category', Stock = '$stock', Price = '$price' WHERE ProductID = '$id'";
         }
-        $sql = "UPDATE products SET ProductName = '$name', Brand = '$brand', CategoryID = '$category', Stock = '$stock', Price = '$price', image= ' $new_imgname' WHERE ProductID = '$id'";
+        
         $result=mysqli_query($connect,$sql);
         if($result){
             $_SESSION['message'] = "Product has been updated successfully !";
@@ -136,7 +138,6 @@
             unset($_SESSION['UserName']);
             session_destroy();
         header("Location: signin.php");
-    }
-        
+        }
     }
 ?>
